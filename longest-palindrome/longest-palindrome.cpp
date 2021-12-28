@@ -1,3 +1,10 @@
+//  the basic idea behind this is whenever we have any char appearing even no. of time we will take it into consideration for our palindrome
+// as the we can fix it int the start and end but when e encounter any char which is occuring odd numberof times we will add freq-1 to our result 
+//  and in the final ans we will add +1 to ans. if we encountered any odd freq char
+// bcoz one char we can handle in the middle of our palindrome (it wont make the string non - palindrome)
+// for example :-aabbbcccdd
+//  we can make palindromic string as adbcccbda
+
 class Solution {
 public:
   
