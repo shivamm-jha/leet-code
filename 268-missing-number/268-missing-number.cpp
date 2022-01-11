@@ -1,17 +1,20 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-//         int xor1=1;
-//         for(int i=2;i<=nums.size();i++){ 
-//             xor1^=i;
-//         }
+
+        int x1=0,x2=0;
+        int n=nums.size();
+        for(int i=0;i<n;i++){
+            x1^=nums[i];
+            x2^=(i+1);
+        }
+        return x1 ^ x2;
         
-//         int xor2=nums[0];
-//         for(int i=1;i<nums.size();i++){ 
-//             xor2^=nums[i];
-//         }
         
-//         return xor1^xor2;
+        
+        
+//         this method is perfect....
+        
     //     int res = nums.size();
     // for(int i=0; i<nums.size(); i++){
     //     res ^= i;
@@ -20,11 +23,13 @@ public:
     // }
     // return res;
         
-        long long sum=0;
-        int n=nums.size();
-        for(int i=0;i<n;i++){
-            sum+=nums[i];
-        }
-        return ((n)*(n+1))/2-sum;
+        
+//         this method is not perfect as it might integer overflow...
+        // long long sum=0;
+        // int n=nums.size();
+        // for(int i=0;i<n;i++){
+        //     sum+=nums[i];
+        // }
+        // return ((n)*(n+1))/2-sum;
     }
 };
