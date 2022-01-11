@@ -11,6 +11,13 @@
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
+        
+//         here we are using a vector to store the values of original list and then
+//          swapping the elements of vectors and then making a new list fron the vector elements
+
+        
+        
+        
 //         vector<int> v;
 //         ListNode * curr=head;
 //         while(curr!=NULL){
@@ -31,6 +38,10 @@ public:
 //         }
         
 //         return new_node->next;
+        
+        
+//         best solution 0(n) time complexity... 0(1) space complexity and without changing the original node values just changing the node connections !!
+        
         
         
        ListNode * new_head = new ListNode(0);
