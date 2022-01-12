@@ -17,13 +17,17 @@ public:
             if(nums[0]==target)return true;
             else return false;
         }
+        
+//         finding the pivot and then calling the binary search function...
+       
+        
         int pivot;
         for(int i=0;i<n-1;i++){
             if(nums[i]>nums[i+1]){
                 pivot=i+1; break;
             }
         }
-         //cout<<pivot;
+        
         if(target>=nums[0] and target<=nums[pivot-1]){
              return binary_search(nums,0,pivot-1,target);
         }
