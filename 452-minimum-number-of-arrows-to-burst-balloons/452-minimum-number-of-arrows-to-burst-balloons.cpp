@@ -15,8 +15,13 @@ public:
             // }
             // count++;
             // end = points[i][1];
-            if(points[i][0]<=end){continue; end = min(points[i][1],end);}
-            else{
+            // if(points[i][0]<=end){continue; end = min(points[i][1],end);}
+            // else{
+            //     count++;
+            //     end = points[i][1];
+            // }
+            
+            if(points[i][0]> end){
                 count++;
                 end = points[i][1];
             }
