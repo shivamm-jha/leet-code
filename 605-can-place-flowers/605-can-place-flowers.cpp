@@ -2,46 +2,22 @@ class Solution {
 public:
     bool canPlaceFlowers(vector<int>& arr, int count) {
         int n = arr.size();
-        if(n==1){
-            if(arr[0]==0){
-                count--;
-                arr[0]=1;
-                
+        if(count==0) return true;
+        if(n==0)return false;
+        if(n==1) return arr[0]==0;
+        arr.push_back(0);
+        arr.insert(arr.begin(),0);
+        n= arr.size();
+        int i = 0 , flowers=0;
+        while(i<n-2 and flowers!=count ){
+            if(arr[i]==0 and arr[i+1]==0 and arr[i+2]==0){
+                flowers++;
+                arr[i+1]=1;
             }
+            i++;
         }
         
-       else if(n==2){
-            if(arr[0]==0 and arr[1]==0){
-                count--;
-                arr[0]=1;
-            }
-        }
-        else{
-        for(int i=0;i<n;i++){
-            if(i==0){
-                if(arr[i+1]==0 and arr[i]==0){
-                    count--;
-                    arr[i]=1;
-                }
-            }
-            
-            else if(i==n-1){
-                if(arr[i-1]==0 and arr[i]==0){
-                    count--;
-                    arr[i]=1;
-                }
-            }
-            else{
-                if(arr[i-1]==0 and arr[i]==0 and arr[i+1]==0){
-                    count--;
-                    arr[i]=1;
-                }
-            }
-        }
-        }
-        // for(auto &i:arr)cout<<i<<" ";
-        // cout<<endl<<count;
-        if(count>0) return false;
-        return true;
+        return flowers==count;
+        
     }
 };
