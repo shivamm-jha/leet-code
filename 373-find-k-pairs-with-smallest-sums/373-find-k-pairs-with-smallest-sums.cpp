@@ -18,6 +18,7 @@ public:
                      pq.push(make_pair(nums1[i]+nums2[j]  , make_pair(nums1[i],nums2[j])));
                      
                 }
+                else break;
                              
             }
         }
