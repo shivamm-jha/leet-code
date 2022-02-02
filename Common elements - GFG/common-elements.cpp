@@ -68,18 +68,33 @@ class Solution
         // return v;
         
         
-        unordered_set<int> st1,st2;
-        set<int> st3;
-        for(int i=0;i<n2;i++)st1.insert(b[i]);
-        for(int i=0;i<n3;i++) st2.insert(c[i]);
-        for(int i=0;i<n1;i++){
-            if(st1.find(a[i])!=st1.end() and st2.find(a[i])!=st2.end()){
-                st3.insert(a[i]);
-            }
-        }
+        // unordered_set<int> st1,st2;
+        // set<int> st3;
+        // for(int i=0;i<n2;i++)st1.insert(b[i]);
+        // for(int i=0;i<n3;i++) st2.insert(c[i]);
+        // for(int i=0;i<n1;i++){
+        //     if(st1.find(a[i])!=st1.end() and st2.find(a[i])!=st2.end()){
+        //         st3.insert(a[i]);
+        //     }
+        // }
         
-        for(auto &i:st3){
-            v.push_back(i);
+        // for(auto &i:st3){
+        //     v.push_back(i);
+        // }
+        // return v;
+        
+        int i=0,j=0,k=0;
+         int prev1, prev2, prev3;
+        prev1=prev2=prev3=INT_MIN;
+        while(i<n1 and j<n2 and k<n3){
+            while(a[i]==prev1 && i<n1)i++;
+            while(b[j]==prev2 && j<n2) j++;
+            while(c[k]==prev3 and k<n3)k++;
+            
+            if(a[i]==b[j] and b[j]==c[k]){v.push_back(a[i]);prev1=a[i],prev2=b[j],prev3=c[k]; i++,j++,k++;}
+            else if(a[i]< b[j]){prev1=a[i]; i++;}
+            else if(b[j]<c[k]){prev2=b[j]; j++; }
+            else{ prev3=c[k]; k++; }
         }
         return v;
         
