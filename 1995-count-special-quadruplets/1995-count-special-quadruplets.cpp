@@ -4,16 +4,29 @@ public:
        unordered_map<int,int>umap;
        int n=nums.size();
        int count=0;
-        for(int i=0;i<n-3;i++){
-            for(int j=i+1;j<n-2;j++){
-                for(int k=j+1;k<n-1;k++){
-                   for(int l=k+1;l<n;l++){
-                       if(nums[i]+nums[j]+nums[k]==nums[l])count++;
-                   } 
+//         for(int i=0;i<n-3;i++){
+//             for(int j=i+1;j<n-2;j++){
+//                 for(int k=j+1;k<n-1;k++){
+//                    for(int l=k+1;l<n;l++){
+//                        if(nums[i]+nums[j]+nums[k]==nums[l])count++;
+//                    } 
+//                 }
+//             }
+//         }
+        
+//         return count;
+        
+        umap[nums[n-1]]++;
+        for(int i=n-2;i>=2;i--){
+            for(int j=i-1;j>=1;j--){
+                for(int k=j-1;k>=0;k--){
+                    int sum= nums[i]+nums[j]+nums[k];
+                    if(umap.find(sum)!=umap.end())count+=umap[sum];
+                    
                 }
             }
+            umap[nums[i]]++;
         }
-        
         return count;
     }
 };
