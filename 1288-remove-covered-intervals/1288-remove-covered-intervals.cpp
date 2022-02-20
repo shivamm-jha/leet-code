@@ -1,11 +1,11 @@
 class Solution {
 public:
-     static bool comp(pair<int,int> & a , pair<int,int> &b){
+    static bool comp(pair<int,int> & a , pair<int,int> &b){
         if(a.first==b.first) return a.second> b.second;
        return  a.first < b.first;
     }
     int removeCoveredIntervals(vector<vector<int>>& intervals) {
-         vector<pair<int,int>> v;
+        vector<pair<int,int>> v;
         for(int i=0;i<intervals.size();i++){
             v.push_back({intervals[i][0], intervals[i][1]});
         }
@@ -24,5 +24,6 @@ public:
             if(i<v.size())start = v[i].first, end = v[i].second;
         }
         return v.size()-count;
+       
     }
 };
