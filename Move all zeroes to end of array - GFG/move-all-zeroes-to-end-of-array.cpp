@@ -42,17 +42,29 @@ public:
 	   //    else i++, j++;
 	   //}
 	   
-	   // other method
+	   // other method.......
 	   
-	   int lastNonZeroFound =0;
-	   for(int i=0;i<n;i++){
-	       if(arr[i]!=0){
-	           swap(arr[lastNonZeroFound++],arr[i]);
+	   //int lastNonZeroFound =0;
+	   //for(int i=0;i<n;i++){
+	   //    if(arr[i]!=0){
+	   //        swap(arr[lastNonZeroFound++],arr[i]);
+	   //    }
+	   //}
+	   
+	   //for(int i=lastNonZeroFound; i<n;i++){
+	   //    arr[i]=0;
+	   //}
+	   
+	   
+	   // one pass solution.....
+	   
+	   
+	   
+	   int lastNonZeroFound,curr;
+	   for(lastNonZeroFound=0,curr=0; curr<n;curr++){
+	       if(arr[curr]!=0){
+	           swap(arr[lastNonZeroFound++],arr[curr]);
 	       }
-	   }
-	   
-	   for(int i=lastNonZeroFound; i<n;i++){
-	       arr[i]=0;
 	   }
 	   
 	    
