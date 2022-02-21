@@ -8,17 +8,18 @@ using namespace std;
 class Solution
 {
     public:
-    void sort012(int a[], int n)
+    void sort012(int nums[], int n)
     {
-        int low=0,mid=0,high=n-1;
-        while(mid<=high){
-            if(a[mid]==0){
-                swap(a[low++],a[mid++]);
-            }
-            else if(a[mid]==1)mid++;
-            else{
-                swap(a[mid],a[high]);
-                high--;
+        int start =0 , mid =0 , end = n-1;
+        while(mid <= end){
+           if(nums[mid]==0){
+               swap(nums[start],nums[mid]);
+               start++;mid++;
+           }
+            else if(nums[mid]==1) mid++;
+            else {
+                swap(nums[mid],nums[end]);
+                end--;
             }
         }
     }
