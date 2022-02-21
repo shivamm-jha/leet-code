@@ -7,19 +7,41 @@ using namespace std;
 class Solution{
 public:
 	void pushZerosToEnd(int arr[], int n) {
-	   int brr[n]={0};
-	   int i=0,j=0;
-	   while(i<n){
-	       if(arr[i]!=0){
-	           brr[j]=arr[i];
+	    
+	   // time complexity (n)... space complexity 0(n)
+	   
+	   
+	   
+	   //int brr[n]={0};
+	   //int i=0,j=0;
+	   //while(i<n){
+	   //    if(arr[i]!=0){
+	   //        brr[j]=arr[i];
+	   //        j++;
+	   //    }
+	   //    i++;
+	   //}
+	   
+	   //for(i=0;i<n;i++){
+	   //    arr[i]=brr[i];
+	   //}
+	   
+	   
+	   //better solution
+	   //time complexity 0(n)... space complexity 0(1)
+	   
+	   int i=0,j=1;
+	   while(i<n && j<n){
+	       if(arr[i]==0 && arr[j]!=0){
+	           swap(arr[i],arr[j]);
+	           i++; j++;
+	       }
+	       else if(arr[i]==0 && arr[j]==0){
 	           j++;
 	       }
-	       i++;
+	       else i++, j++;
 	   }
 	   
-	   for(i=0;i<n;i++){
-	       arr[i]=brr[i];
-	   }
 	    
 	}
 };
