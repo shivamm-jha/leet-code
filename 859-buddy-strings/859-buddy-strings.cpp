@@ -1,7 +1,21 @@
 class Solution {
 public:
     bool buddyStrings(string s, string goal) {
-        if(s.size()!=goal.size()) return false;
+        if(s.size()!=goal.size())return false;
+        
+//      time complexity 0(n2)...   
+        
+        
+//         for(int i=0;i<s.size()-1;i++){
+            
+//             for( int j=i+1;j<s.size();j++){
+//                 string str = s;
+//                 swap(str[i],str[j]);
+//                 if(str==goal)return true;
+//             }
+//         }
+//         return false;
+        
         int count =0;
         vector<int> freq1(26,0),freq2(26,0);
         for(int i=0;i<s.size();i++){
