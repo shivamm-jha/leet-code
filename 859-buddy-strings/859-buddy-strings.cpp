@@ -16,6 +16,10 @@ public:
 //         }
 //         return false;
         
+        
+        
+//         time complexity 0(n).....
+        
         int count =0;
         vector<int> freq1(26,0),freq2(26,0);
         for(int i=0;i<s.size();i++){
@@ -23,13 +27,7 @@ public:
             freq1[s[i]-'a']++;
             freq2[goal[i]-'a']++;
         }
-        
-        // cout<<count<<endl;
-        // for(int i=0;i<26;i++)cout<<freq1[i]<<" ";
-        // cout<<endl;
-        // for(int i=0;i<26;i++)cout<<freq2[i]<<" ";
-        // cout<<endl;
-        
+    
         if(count==2 && freq1==freq2)return true;
         if(count==0 && freq1==freq2){
             int flag=0;
