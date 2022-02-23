@@ -1,7 +1,11 @@
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
-       set<int> st;
+        
+//         time complexity 0(nlogn)... space complexity 0(n)
+        
+        
+       unordered_set<int> st;
        for(auto &i:nums){
           st.insert(i);
        }
