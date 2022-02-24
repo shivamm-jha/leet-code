@@ -1,8 +1,8 @@
 Started a leet code streak on 21st dec. 2021
 
-current streak : 65 days
+current streak : 66 days
 
-longest streak : 65 days
+longest streak : 66 days
 
 My Leet code profile : [jha_shivamm](https://leetcode.com/jha_shivamm/)
 
