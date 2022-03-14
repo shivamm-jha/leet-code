@@ -1,6 +1,6 @@
 Started a leet code streak on 21st dec. 2021
 
-current streak : 834 days
+current streak : 84 days
 
 longest streak : 84 days
 
