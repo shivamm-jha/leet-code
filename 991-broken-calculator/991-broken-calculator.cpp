@@ -1,14 +1,18 @@
 class Solution {
 public:
+    unordered_map<int,int> umap;
     int solve(int startValue , int target){
         if(startValue >= target){
             return startValue - target;
         }
+        if(umap.find(target)!=umap.end()){
+            return umap[target];
+        }
         if(target & 1){
-            return 1 + solve(startValue,target+1);
+            return umap[target] = 1 + solve(startValue,target+1);
         }
         else{
-            return 1 + solve(startValue, target/2);
+            return umap[target]=  1 + solve(startValue, target/2);
         }
     }
     
@@ -29,11 +33,3 @@ public:
     }
 };
 
-// if(startValue >= target)
-//             return startValue - target;
-        
-//         if(target & 1)// if odd
-//             return 1 + brokenCalc(startValue, target  + 1);
-        
-//         // if even
-//         return 1 + brokenCalc(startValue, target / 2);
