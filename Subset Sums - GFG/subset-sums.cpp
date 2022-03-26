@@ -7,29 +7,29 @@ class Solution
 {
 public:
     vector<int> ans;
-    void solve(vector<int> &nums, vector<int> & empty,int i){
-       if(i==nums.size()){
-           int s=0;
-           for(auto &i:empty){
-               s+=i;
-           }
-           ans.push_back(s);
-           return;
+    void solve(vector<int> &nums, vector<int> & empty,int i,int s){
+        
+        // brute force time complexity 0(2^n * n);
+        
+      if(i==nums.size()){
+          
+          ans.push_back(s);
+          return;
            
-       }
+      }
         // pick
-        empty.push_back(nums[i]);
-        solve(nums,empty,i+1);
-        empty.pop_back();
+       s+=nums[i];
+        solve(nums,empty,i+1,s);
+        s-=nums[i];
         
         //don't pick
-        solve(nums,empty,i+1);
+        solve(nums,empty,i+1,s);
         
     }
     vector<int> subsetSums(vector<int> nums, int n)
     {
         vector<int> empty;
-        solve(nums,empty,0);
+        solve(nums,empty,0,0);
         return ans;
     }
 };
