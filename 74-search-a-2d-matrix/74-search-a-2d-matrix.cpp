@@ -19,8 +19,10 @@ public:
                     }
                     else i=mid+1;
                 }
+                return false;
             }
-           row_start++;
+            if(target<matrix[row_start][0]) return false;
+           while(row_start<= row_end && target>matrix[row_start][m-1])row_start++;
             
             
         }
