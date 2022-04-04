@@ -71,34 +71,54 @@ struct Node
 // Move Zeros to the front of the list
 void moveZeroes(struct Node **head)
 {
-    Node * dummyNode = new Node(-1);
-    Node * curr = *head;
-   Node * temp = dummyNode;
     
-    while(curr!=NULL){
-        if(curr->data==0){
-            struct Node  *newNode = new Node(0);
-             temp->next=newNode;
-             temp=newNode;
+    // time complexiy 0(n) .. space complexity 0(n)
+    
+    // Node * dummyNode = new Node(-1);
+    // Node * curr = *head;
+    // Node * temp = dummyNode;
+    
+    // while(curr!=NULL){
+    //     if(curr->data==0){
+    //         struct Node  *newNode = new Node(0);
+    //          temp->next=newNode;
+    //          temp=newNode;
+    //     }
+    //     curr=curr->next;
+    // }
+    
+    // curr = *head;
+    // while(curr!=NULL){
+    //     if(curr->data!=0){
+    //          struct Node  *newNode = new Node(curr->data);
+    //         temp->next=newNode;
+    //         temp=newNode;
+    //     }
+    //     curr=curr->next;
+    // }
+    
+    // temp = dummyNode->next;
+    // curr = *head;
+    // while(curr!=NULL && temp!=NULL){
+    //     curr->data=temp->data;
+    //     curr=curr->next;
+    //     temp=temp->next;
+    // }
+    
+    
+    //  time complexity 0(n) ... space complexity 0(1)
+    
+   Node * curr = * head;
+    while(curr && curr->next){
+        if(curr->next->data==0){
+            Node * k = curr->next;
+            Node * n = k->next;
+            k->next = *head;
+            *head= k;
+            curr ->next =n;
         }
-        curr=curr->next;
-    }
-    
-    curr = *head;
-    while(curr!=NULL){
-        if(curr->data!=0){
-             struct Node  *newNode = new Node(curr->data);
-            temp->next=newNode;
-            temp=newNode;
+        else{
+            curr = curr->next;
         }
-        curr=curr->next;
-    }
-    
-    temp = dummyNode->next;
-    curr = *head;
-    while(curr!=NULL && temp!=NULL){
-        curr->data=temp->data;
-        curr=curr->next;
-        temp=temp->next;
     }
 }
