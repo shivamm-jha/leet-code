@@ -2,7 +2,7 @@ class Solution {
     public long ans(int x){
         if(x==1) return 1;
         long ans = -1;
-        long start = 0 , end = x;
+        long start = 0 , end = x/2;
         while(start<= end){
             long mid = start + (end-start)/2;
             if(mid*mid<=x){
