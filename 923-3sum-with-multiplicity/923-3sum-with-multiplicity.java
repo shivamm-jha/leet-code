@@ -1,52 +1,38 @@
 class Solution {
-public:
-    int mod = 1e9+7;
-    int ans(vector<int> & nums , int target){
-        int count=0;
-        int n = nums.size();
-        unordered_map<int,int> umap;
-        for(int i=0;i<n-1;i++){
-            for(int j=i+1;j<n;j++){
-                int key = target - (nums[i]+nums[j]);
-                count+=umap[key];
+    int mod = 100000007;
+    public  int ans(int[] arr , int target){
+        // HashMap<Integer, Integer> map = new HashMap<>();
+        // int count =0;
+        // for(int i=0;i<arr.length;i++){
+        //     for(int j=i+1;j<arr.length;j++){
+        //        int key = target - (arr[i]+arr[j]);
+        //        if(map.containsKey(key)){
+        //            count+=map.get(key);
+        //        }
+        //     }
+        //     count%=mod;
+        //     if(map.containsKey(arr[i])){
+        //         map.put(arr[i],map.get(arr[i])+1);
+        //     }
+        //     else map.put(arr[i],1);
+        // }
+        // return count%mod;
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        int res = 0;
+        int mod = 1000000007;
+        for (int i = 0; i < arr.length; i++) {
+            res = (res + map.getOrDefault(target - arr[i], 0)) % mod;
+            
+            for (int j = 0; j < i; j++) {
+                int temp = arr[i] + arr[j];
+                map.put(temp, map.getOrDefault(temp, 0) + 1);
             }
-            count%=mod;
-            umap[nums[i]]++;
         }
-        
-        return count%mod;
-        
-    }
-    int threeSumMulti(vector<int>& nums, int target) {
-        int res = ans(nums,target);
         return res;
     }
-};
-
-
-// long long mod = 1e9 + 7;
-    
-//     int threeSumMulti(vector<int>& arr, int target) {
-        
-//         int n = arr.size();
-        
-//         unordered_map<int, int> mp;
-        
-//         int count = 0;
-        
-//         for(int i = 0; i < n; i++)
-//         {
-//             for(int j = i + 1; j < n; j++)
-//             {
-//                 int need = target - arr[i] - arr[j];
-                
-//                 count += mp[need];
-//             }
-            
-//             count %= mod;
-            
-//             mp[arr[i]]++;
-//         }
-        
-//         return count % mod;
-//     }
+    public int threeSumMulti(int[] arr, int target) {
+        int res = ans(arr,target);
+        return res;
+    }
+}
