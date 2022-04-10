@@ -14,7 +14,6 @@ public:
     int minOperations(int *a,int n)
     {
         int count =0;
-        
         priority_queue<int,vector<int>,greater<int>> pq;
         for(int i=0;i<n;i++){
             if(pq.empty()!=1 && pq.top()<a[i]){
