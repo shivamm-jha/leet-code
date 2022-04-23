@@ -9,12 +9,14 @@ using namespace std;
 class Solution
 {
     public:
-    int sum(int num1 , int num2)
+    int sum(int a , int b)
     {
-        if (!num1)
-      return num2;
-        else
-      return sum((num1 & num2) << 1, num1 ^ num2);
+       while(b!=0){
+           int carry = a & b;
+           a= a ^ b;
+           b= carry << 1;
+       }
+       return a;
     }
 };
 
