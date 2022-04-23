@@ -1,14 +1,17 @@
 public class Codec {
-    
-  
-   // Encodes a URL to a shortened URL.
+
+    Map<String,String> mp = new HashMap<>();
+    int n =0;
+    // Encodes a URL to a shortened URL.
     public String encode(String longUrl) {
-        return longUrl;
+        String res = "https://leetcode.com/problems/" + Integer.toString(n);
+        mp.put(res, longUrl);
+        return res;
     }
 
     // Decodes a shortened URL to its original URL.
     public String decode(String shortUrl) {
-        return shortUrl;
+        return mp.get(shortUrl);
     }
 }
 
