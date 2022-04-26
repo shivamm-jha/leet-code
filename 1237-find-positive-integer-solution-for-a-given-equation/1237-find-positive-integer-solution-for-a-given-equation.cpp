@@ -14,11 +14,24 @@ class Solution {
 public:
     vector<vector<int>> findSolution(CustomFunction& customfunction, int z) {
         vector<vector<int>> v;
-        for(long i=1;i<=1000;i++){
-            for(long j=1;j<=1000;j++){
-                if(customfunction.f(i,j)==z){
-                    v.push_back({int(i),int(j)});
+        for(int i=1;i<=1000;i++){
+            // for(long j=1;j<=1000;j++){
+            //     if(customfunction.f(i,j)==z){
+            //         v.push_back({i,j});
+            //     }
+            // }
+            
+            int low = 1 , high = 1000;
+            while(low<=high){
+                int mid = low + (high-low)/2;
+                if(customfunction.f(i,mid)==z){
+                    v.push_back({i,mid});
+                    low = mid+1;
                 }
+                else if(customfunction.f(i,mid)<z){
+                    low = mid+1;
+                }
+                else high = mid-1;
             }
         }
         return v;
