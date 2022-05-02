@@ -11,20 +11,28 @@
  */
 class Solution {
 public:
-    int height(TreeNode * root){
+    int height(TreeNode * root, int &diameter){
         if(root==NULL) return 0;
-        int leftHeight = height(root->left);
-        int rightHeight = height(root->right);
+        int leftHeight = height(root->left,diameter);
+        int rightHeight = height(root->right,diameter);
+        diameter=max(diameter,leftHeight+rightHeight);
         return max(leftHeight,rightHeight)+1;
     }
     int diameterOfBinaryTree(TreeNode* root) {
        
-        if(root==NULL) return 0;
-        int leftHeight = height(root->left);
-        int rightHeight = height(root->right);
-       
-        int lDiameter =  diameterOfBinaryTree(root->left);
-        int rDiameter =  diameterOfBinaryTree(root->right);
-        return max(leftHeight+rightHeight,max(lDiameter,rDiameter));
+//  T.c = 0(N^2) bcoz of two we are traversing every node and calculating left height
+//          and right height for every node.
+
+        // if(root==NULL) return 0;
+        // int leftHeight = height(root->left);
+        // int rightHeight = height(root->right);
+        // int lDiameter =  diameterOfBinaryTree(root->left);
+        // int rDiameter =  diameterOfBinaryTree(root->right);
+        // return max(leftHeight+rightHeight,max(lDiameter,rDiameter));
+        
+//         better solution , T.C = 0(N)
+        int diameter = 0;
+        height(root,diameter);
+        return diameter;
     }
 };
