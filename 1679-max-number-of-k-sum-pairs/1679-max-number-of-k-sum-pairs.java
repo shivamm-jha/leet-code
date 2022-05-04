@@ -1,17 +1,35 @@
 class Solution {
-    public int maxOperations(int[] nums, int k) {
-        Arrays.sort(nums);
-        int l=0 , h= nums.length-1;
+public:
+    int maxOperations(vector<int>& nums, int k) {
+         // o(nlogn)...
+        
+        
+        // sort(nums.begin(),nums.end());
+        // int l=0 , h= nums.size()-1;
+        // int count =0;
+        // while(l<h){
+        //     if(nums[l]+nums[h]==k){
+        //         count++;
+        //         l++;
+        //         h--;
+        //     }
+        //     else if(nums[l]+nums[h]<k)l++;
+        //     else h--;
+        // }
+        // return count;
+        
         int count =0;
-        while(l<h){
-            if(nums[l]+nums[h]==k){
+        unordered_map<int,int> umap;
+        
+        for(int i=0;i<nums.size();i++){
+            if(umap.find(k-nums[i])!=umap.end()){
                 count++;
-                l++;
-                h--;
+                umap[k-nums[i]]--;
+                if(umap[k-nums[i]]==0)umap.erase(k-nums[i]);
+                
             }
-            else if(nums[l]+nums[h]<k)l++;
-            else h--;
+            else umap[nums[i]]++;
         }
         return count;
     }
-}
+};
