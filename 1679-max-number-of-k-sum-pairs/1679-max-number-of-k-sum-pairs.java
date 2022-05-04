@@ -1,11 +1,7 @@
 class Solution {
-public:
-    int maxOperations(vector<int>& nums, int k) {
-         // o(nlogn)...
-        
-        
-        // sort(nums.begin(),nums.end());
-        // int l=0 , h= nums.size()-1;
+    public int maxOperations(int[] nums, int k) {
+        // Arrays.sort(nums);
+        // int l=0 , h= nums.length-1;
         // int count =0;
         // while(l<h){
         //     if(nums[l]+nums[h]==k){
@@ -18,18 +14,21 @@ public:
         // }
         // return count;
         
-        int count =0;
-        unordered_map<int,int> umap;
         
-        for(int i=0;i<nums.size();i++){
-            if(umap.find(k-nums[i])!=umap.end()){
+        HashMap<Integer,Integer> mp = new HashMap<>();
+        int count =0;
+        for(int i=0;i<nums.length;i++){
+            if(mp.containsKey(k-nums[i])){
                 count++;
-                umap[k-nums[i]]--;
-                if(umap[k-nums[i]]==0)umap.erase(k-nums[i]);
-                
+                if(mp.get(k-nums[i])==1) mp.remove(k-nums[i]);
+                else mp.put(k-nums[i], mp.get(k-nums[i])-1);
             }
-            else umap[nums[i]]++;
+               else{
+                   mp.put(nums[i], mp.getOrDefault(nums[i],0)+1);
+               }
         }
-        return count;
+         return count;
     }
-};
+}
+               
+        
