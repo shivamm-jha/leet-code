@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    int maxi = -99999999;
+    int maxi = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
         height(root);
         return maxi;
