@@ -1,18 +1,25 @@
 class MyStack {
 public:
-    deque<int> q1;
+    // deque<int> q1;
+    queue<int> q1;
     
     MyStack() {
         
     }
     
     void push(int x) {
-        q1.push_front(x);
+        // q1.push_front(x);
+        
+        q1.push(x);
+        for(int i=0;i<q1.size()-1;i++){
+            q1.push(q1.front());
+            q1.pop();
+        }
     }
     
     int pop() {
         int ele = q1.front();
-        q1.pop_front();
+        q1.pop();
         return ele;
     }
     
