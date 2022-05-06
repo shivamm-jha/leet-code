@@ -1,30 +1,29 @@
 class Solution {
-public:
-    string removeDuplicates(string s, int k) {
-        if(k>s.size()) return s; // base case
-        stack<pair<int,int>> st;
-        int n = s.size();
-        for(int i=0;i<n;i++){
-            if(st.empty() || st.top().first!=s[i])st.push({s[i],1});
-            else{
-                auto prev = st.top();
-                st.pop();
-                st.push({s[i],prev.second+1});
-            }
-            if(st.top().second==k)st.pop();
-        }
-        
-        string ans="";
-        while(!st.empty()){
-            auto curr = st.top();
-            st.pop();
-            while(curr.second--){
-                ans.push_back(curr.first);
+    public String removeDuplicates(String s, int k) {
+        Stack<Pair<Character, Integer>> st = new Stack<>();
+        for(char c : s.toCharArray()){
+            if(st.isEmpty() || st.peek().getKey() !=c){
+                st.push(new Pair<>(c, 1));
+            } else{
+                // matching case
+                Pair<Character, Integer> head = st.pop();
+                st.push(new Pair<>(head.getKey(), head.getValue()+1));
+
+                if(st.peek().getValue() == k){
+                    st.pop();
+                }
             }
         }
-        reverse(ans.begin(),ans.end());
+
+        String ans =  "";
+        while(!st.isEmpty()){
+            Pair<Character, Integer> head = st.pop();
+            int freq = head.getValue();
+            while(freq-->0){
+                ans = head.getKey() +ans;
+            }
+        }
+
         return ans;
     }
-};
-
-
+}
