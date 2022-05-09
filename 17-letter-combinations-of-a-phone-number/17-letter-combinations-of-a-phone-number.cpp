@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<string> ans;
     vector<string> mp = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-    void solve(string digits, string output , int index){
+    void solve(string digits, string &output , int index){
         if(index>= digits.size()){
             ans.push_back(output);
             return;
