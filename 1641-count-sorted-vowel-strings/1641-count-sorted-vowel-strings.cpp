@@ -1,12 +1,11 @@
 class Solution {
 public:
     vector<string> s = {"a","e","i","o","u"};
-    vector<string> ans;
-    int count1 =0;
+    int res =0;
     void count(int n, int i, string &str ){
         if(str.size()>=n){
-            // ans.push_back(str);
-            count1++;
+           
+            res++;
             return;
         }
         
@@ -26,8 +25,6 @@ public:
     int countVowelStrings(int n) {
         string str="";
         count(n,0,str);
-        // for(auto &it:ans)cout<<it<<" ";
-        // return ans.size();
-        return count1;
+        return res;
     }
 };
