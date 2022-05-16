@@ -1,35 +1,63 @@
 class Solution {
-public:
-    bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
-        vector<int> adj[n];
-        for(int i=0;i<edges.size();i++){
-            addEdge(edges[i][0],edges[i][1],adj);
+    
+    public boolean validPath(int n, int[][] edges, int source, int destination) {
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+         for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
+        for(int a[]:edges){
+           addEdge(a[0],a[1],adj); 
         }
-        queue<int> q;
-        q.push(source);
-        vector<bool> vis(n,false);
-        // for(int i=0;i<vis.size();i++)cout<<vis[i]<<" ";
-        // cout<<endl;
+        
+        boolean vis[]= new boolean[n];
+        
+        for(int i=0;i<n;i++)vis[i]=false;
+        
+        Queue<Integer> q = new LinkedList<>();
+        q.add(source);
         vis[source]=true;
-        while(!q.empty()){
-            int node = q.front();
-            q.pop();
-            for(auto val : adj[node]){
-                if(vis[val]!=true){
-                    q.push(val);
+        while(!q.isEmpty()){
+            int node = q.peek();
+            for(int val : adj.get(node)){
+                if(vis[val]==false){
+                    q.add(val);
                     vis[val]=true;
                 }
             }
-            
+            q.poll();
         }
         
-        // for(int i=0;i<vis.size();i++)cout<<vis[i]<<" ";
-        
         return (vis[destination]);
+        
     }
     
-    void addEdge(int x, int y, vector<int> adj[]){
-        adj[x].push_back(y);
-        adj[y].push_back(x);
+    public void addEdge(int x , int y,ArrayList<ArrayList<Integer>> adj){
+        adj.get(x).add(y);
+        adj.get(y).add(x);
     }
-};
+}
+
+
+
+
+
+// ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+//         for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
+//         for (int i = 0; i < edges.length; i++) {
+//             adj.get(edges[i][0]).add(edges[i][1]);
+//             adj.get(edges[i][1]).add(edges[i][0]);
+//         }
+        
+//         Queue<Integer> q = new LinkedList<>();
+//         HashSet<Integer> vis = new HashSet<>();
+//         q.add(start);
+//         while (!q.isEmpty()) {
+//             int u = q.poll();
+//             vis.add(u);
+//             if (u == end) return true;
+//             for (int v : adj.get(u)) {
+//                 if (!vis.contains(v)) {
+//                     q.add(v);
+//                 }
+//             }
+//         }
+//         return false;
+//     }
