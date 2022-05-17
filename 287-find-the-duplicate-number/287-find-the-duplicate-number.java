@@ -12,13 +12,25 @@ class Solution {
         // }
         // return 1;
         
-        HashMap<Integer,Integer> map = new HashMap<>();
-        for(int i=0;i<n;i++){
-            if(map.containsKey(nums[i])){
-                return nums[i];
-            }
+//          T.c = 0(N)  , S.C = 0(N)
+        
+//         HashMap<Integer,Integer> map = new HashMap<>();
+//         for(int i=0;i<n;i++){
+//             if(map.containsKey(nums[i])){
+//                 return nums[i];
+//             }
             
-            map.put(nums[i],1);
+//             map.put(nums[i],1);
+//         }
+//         return 1;
+        
+        
+//          most optimal solution
+        
+        for(int i=0;i<n;i++){
+            int key = Math.abs(nums[i]);
+            if(nums[key]<0)return key;
+            else nums[key]= - nums[key];
         }
         return 1;
     }
