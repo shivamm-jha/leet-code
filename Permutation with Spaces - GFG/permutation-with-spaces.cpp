@@ -7,19 +7,14 @@ using namespace std;
 class Solution{
 public:
     vector<string> ans;
-    void dfs(string &empty, string &s , int i ){
+    void dfs(string empty, string &s , int i ){
         if(i+1>=s.size()){
             empty+=s[i];
             ans.push_back(empty);
-            empty.pop_back();
             return;
         }
-        empty+=s[i];
-        empty+=" ";
-        dfs(empty,s,i+1);
-        empty.pop_back();
-        dfs(empty,s,i+1);
-        empty.pop_back();
+        dfs(empty+s[i]+" ",s,i+1);
+        dfs(empty+s[i],s,i+1);
     }
     vector<string> permutation(string S){
         string empty;
