@@ -1,5 +1,6 @@
 class Solution {
 public:
+    int dp[1000000];
     int solve(vector<int> & nums, int i, int j, int &ans){
         if(j<nums.size()){
             int val = nums[j]-nums[i];
@@ -20,6 +21,11 @@ public:
         //     val>0? profit+=val : profit+=0;
         // }
         // return profit;
+        
+        
+        
+//         recurrsive way...
+        memset(dp,-1,sizeof(dp));
         int ans = 0;
         int res = solve(prices,0,1,ans);  
         return res;
