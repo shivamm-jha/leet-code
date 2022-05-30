@@ -36,10 +36,11 @@ public:
         }
         
         int ans=0;
+        int j=0;
         for(int i=n-k-1;i<n;i++){
             window += nums[i];
             ans = max(ans, totalSum - window);
-            window -= nums[i-(n-k-1)];
+            window -= nums[j++];
         }
         
         return ans;
