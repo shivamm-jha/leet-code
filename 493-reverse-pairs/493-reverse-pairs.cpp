@@ -29,6 +29,8 @@ public:
         for(int i=low;i<=high;i++){
             nums[i]=temp[i-low];
         }
+        // for(auto &it: nums)cout<<it<<" ";
+        // cout<<endl;
         return cnt;
     }
     int mergesort(vector<int>& nums, int low , int high){
@@ -40,6 +42,6 @@ public:
         return inv;
     }
     int reversePairs(vector<int>& nums) {
-        return mergesort(nums,0,nums.size()-1);
+       return mergesort(nums,0,nums.size()-1);
     }
 };
