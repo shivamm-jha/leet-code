@@ -14,16 +14,31 @@ public:
         }
         
         sort(v.begin(),v.end(),comp);
-        for(int i=0;i<v.size()-1;++i){
-            int count=1;
-            int start = v[i].second;
-            for(int j=i+1;j<v.size();++j){
-                if(v[j].first > start){
-                    count++;
-                    start = v[j].second;
-                }
+        // for(int i=0;i<v.size()-1;++i){
+        //     int count=1;
+        //     int start = v[i].second;
+        //     for(int j=i+1;j<v.size();++j){
+        //         if(v[j].first > start){
+        //             count++;
+        //             start = v[j].second;
+        //         }
+        //     }
+        //     ans=max(ans,count);
+        // }
+        //int ans = 1;
+        int count = 1;
+        int start = v[0].second;
+        for(int i=1;i<v.size();i++){
+            if(v[i].first > start){
+                count++;
+                start = v[i].second;
+                ans= max(count,ans);
             }
-            ans=max(ans,count);
+            // else{
+            //     ans= max(ans,count);
+            //     count=1;
+            //     start = v[i].second;
+            // }
         }
         return ans;
     }
