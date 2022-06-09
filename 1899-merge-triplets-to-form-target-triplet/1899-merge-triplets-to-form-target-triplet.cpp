@@ -10,7 +10,7 @@ public:
         
         for(int i=0;i<n;++i){
             if(nums[i][0] > target[0] or nums[i][1] > target[1] or nums[i][2] > target[2]){
-                nums[i]= vector<int>(3,-1);
+                nums[i][0]=nums[i][1]=nums[i][2]=-1;
             }
         }
         
