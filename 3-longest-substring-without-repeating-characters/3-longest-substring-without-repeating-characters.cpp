@@ -23,13 +23,12 @@ public:
             if(hash.find(s[idx])==hash.end()){
                 hash[s[idx]]=idx;
                 ans = max(ans, idx-start +1);
-                continue;
+                
             }
             else{
                 auto it = hash.find(s[idx]);
                 int temp = it->second +1;
                 start = max(start,temp);
-                
                 hash.erase(it);
                 hash[s[idx]]=idx;
                 ans= max(ans, idx - start +1);
