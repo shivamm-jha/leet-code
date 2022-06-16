@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[1000][1000];
+    int dp[210][210];
     int solve(vector<vector<int>> &nums , int i , int j){
         if(i==nums.size()) return 0;
         if(j==nums[i].size())return 0;
