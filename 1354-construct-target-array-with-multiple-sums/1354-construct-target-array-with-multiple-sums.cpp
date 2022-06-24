@@ -1,23 +1,24 @@
 class Solution {
 public:
-    bool isPossible(vector<int>& A) {
-        
-        
+    bool isPossible(vector<int>& nums) {
+        priority_queue<int> pq;
         long total = 0;
-        int n = A.size(), a;
-        priority_queue<int> pq(A.begin(), A.end());
-        for (int a : A)
-            total += a;
-        while (true) {
-            a = pq.top(); pq.pop();
-            total -= a;
-            if (a == 1 || total == 1)
-                return true;
-            if (a < total || total == 0 || a % total == 0)
-                return false;
-            a %= total;
-            total += a;
-            pq.push(a);
+        for(auto &it : nums){
+            pq.push(it);
+            total+=it;
         }
+        while(!pq.empty()){
+            int maxEl = pq.top();
+            pq.pop();
+            long remainingSum = total - maxEl;
+            if(maxEl==1 || remainingSum==1)return true;
+            if(maxEl < remainingSum || remainingSum==0)return false;
+            int updatedMax = maxEl % remainingSum;
+            if(updatedMax==0)return false;
+            maxEl = updatedMax;
+            pq.push(maxEl);
+            total = updatedMax + remainingSum;
+        }
+        return true;
     }
 };
