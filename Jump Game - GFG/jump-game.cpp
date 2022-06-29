@@ -9,19 +9,23 @@ using namespace std;
 
 class Solution {
   public:
-    int solve(int nums[], int n , int i){
+  bool dp[100001];
+    bool solve(int nums[], int n , int i){
         if(i==n-1)return 1;
         int reachable = i+nums[i];
+        if(dp[i])return dp;
         for(int k=i+1;k<=reachable;k++){
             if(solve(nums,n,k)){
-                return 1;
+                return dp[i]=true;
             }
         }
-        return 0;
+        return false;
         
     }
     int canReach(int nums[], int n) {
-        return solve(nums,n,0);
+        memset(dp,false,sizeof(dp));
+        if(solve(nums,n,0))return 1;
+        return 0;
     }
 };
 
