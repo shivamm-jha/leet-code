@@ -23,9 +23,15 @@ class Solution {
         
     }
     int canReach(int nums[], int n) {
-        memset(dp,false,sizeof(dp));
-        if(solve(nums,n,0))return 1;
-        return 0;
+        // memset(dp,false,sizeof(dp));
+        // if(solve(nums,n,0))return 1;
+        // return 0;
+        int maxReachable = 0;
+        for(int i=0;i<n;i++){
+            if(maxReachable < i)return 0;
+            maxReachable = max(maxReachable,i+nums[i]);
+        }
+        return 1;
     }
 };
 
