@@ -27,6 +27,8 @@ public:
 //         }
 //         return res;
         
+        
+//          T.c = 0(N) + 0(N) + 0(N) , S.C = 0(N)
         unordered_set<int> st;
         for(auto &it: nums){
             st.insert(it);
