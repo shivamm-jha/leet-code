@@ -38,16 +38,31 @@ public:
 //         }
         
         
-//          reverse postorder 
+//          reverse postorder  (recurrsive solution )
 //          visit right -> left -> root
 //         change the right link of the right node to prev & left link to null and call recurrsion again
         
-        if(root==NULL)return;
+        // if(root==NULL)return;
+        // flatten(root->right);
+        // flatten(root->left);
+        // root->left=NULL;
+        // root->right=prev;
+        // prev=root;
         
-        flatten(root->right);
-        flatten(root->left);
-        root->left=NULL;
-        root->right=prev;
-        prev=root;
+        
+//          iterative stack solution
+        if(root==NULL) return;
+        stack<TreeNode*> st;
+        st.push(root);
+        while(!st.empty()){
+            TreeNode * node = st.top();
+            st.pop();
+            
+            if(node->right)st.push(node->right);
+            if(node->left)st.push(node->left);
+            if(!st.empty()) node->right = st.top();
+            node->left=NULL;
+            
+        }
     }
 };
