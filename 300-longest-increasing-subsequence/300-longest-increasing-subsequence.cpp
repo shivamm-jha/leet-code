@@ -13,6 +13,8 @@ public:
     }
     int lengthOfLIS(vector<int>& nums) {
         memset(dp,-1,sizeof(dp));
+        int dp[2600][2600];
+        
         return solve(nums,0,-1);
         
     }
