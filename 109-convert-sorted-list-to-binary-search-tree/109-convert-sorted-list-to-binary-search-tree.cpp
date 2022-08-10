@@ -21,24 +21,47 @@
  */
 class Solution {
 public:
-    TreeNode * solve(vector<int>&nums, int low, int high){
-        if(low>high)return NULL;
-        int mid = (low+high)/2;
-        TreeNode * root= new TreeNode(nums[mid]);
-        root->left= solve(nums,low,mid-1);
-        root->right=solve(nums,mid+1,high);
-        return root;
-        
-    }
-    TreeNode* sortedListToBST(ListNode* head) {
-        vector<int> nums;
-        ListNode * curr = head;
-        while(curr!=NULL){
-            nums.push_back(curr->val);
-            curr=curr->next;
+    TreeNode * solve(ListNode * head, ListNode * tail){
+        if(head==tail)return NULL;
+        if(head->next==tail){
+            TreeNode * root= new TreeNode(head->val);
+            return root;
         }
         
-        return solve(nums,0,nums.size()-1);
+        ListNode * mid = head, *temp = head;
+        while(temp!=tail && temp->next!=tail){
+            mid= mid->next;
+            temp=temp->next->next;
+        }
         
+        TreeNode * root= new TreeNode(mid->val);
+        root->left =solve(head,mid);
+        root->right=solve(mid->next,tail);
+        return root;
+    }
+    TreeNode* sortedListToBST(ListNode* head) {
+        return solve(head,NULL);
     }
 };
+
+
+// TreeNode *sortedListToBST(ListNode *head, ListNode *tail)
+//     {
+//     	if( head == tail )
+//     		return NULL;
+//     	if( head->next == tail )    // 
+//     	{	
+//     		TreeNode *root = new TreeNode( head->val );
+//     		return root;
+//     	}
+//     	ListNode *mid = head, *temp = head;
+//     	while( temp != tail && temp->next != tail )    // 寻找中间节点
+//     	{
+//     		mid = mid->next;
+//     		temp = temp->next->next;
+//     	}
+//     	TreeNode *root = new TreeNode( mid->val );
+//     	root->left = sortedListToBST( head, mid );
+//     	root->right = sortedListToBST( mid->next, tail );
+//     	return root;
+//     }
