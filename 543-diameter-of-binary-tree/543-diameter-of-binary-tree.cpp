@@ -17,26 +17,32 @@ public:
     int height(TreeNode * root){
         if(!root)return 0;
         
-        return 1 + max(height(root->left), height(root->right));
-    }
-    
-    void solve(TreeNode * root){
-        if(!root){
-            return;
-        }
-        
         int left = height(root->left);
+        
         int right = height(root->right);
         
-        ans= max(ans,left+right);
+        ans = max(ans, left+right);
         
-        solve(root->left);
-        solve(root->right);
-        
+        return 1+ max(left,right);
     }
     
+//     void solve(TreeNode * root){
+//         if(!root){
+//             return;
+//         }
+        
+//         int left = height(root->left);
+//         int right = height(root->right);
+        
+//         ans= max(ans,left+right);
+        
+//         solve(root->left);
+//         solve(root->right);
+        
+//     }
+    
     int diameterOfBinaryTree(TreeNode* root) {
-        solve(root);
+        height(root);
         return ans;
     }
 };
