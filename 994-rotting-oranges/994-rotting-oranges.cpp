@@ -1,50 +1,55 @@
 class Solution {
 public:
-    bool possible(int i, int j, int row_size ,int col_size){
-        if(i>=0 && i<row_size && j>=0 && j<col_size)return true;
-        return false;
-    }
-    
-    bool solve(vector<vector<int>>&grid,int time){
-        int n =grid.size();
+    int orangesRotting(vector<vector<int>>& grid) {
+        int n = grid.size();
         int m = grid[0].size();
-        int rotten = 2;
         
-        vector<vector<int>> nums= grid;
-        for(int k=0;k<time;k++){
-            for(int i=0;i<n;i++){
-                for(int j=0;j<m;j++){
-                    if(nums[i][j]==rotten){
-                        if(possible(i,j+1,n,m) && nums[i][j+1]==1)nums[i][j+1]=rotten+1;
-                        if(possible(i,j-1,n,m) && nums[i][j-1]==1)nums[i][j-1]=rotten+1;
-                        if(possible(i+1,j,n,m) && nums[i+1][j]==1)nums[i+1][j]=rotten+1;
-                        if(possible(i-1,j,n,m) && nums[i-1][j]==1)nums[i-1][j]=rotten+1;
-                    }
-                }
-            }
-            rotten+=1;
-        }
+        vector<vector<int>> vis(n,vector<int>(m,0));
+        
+        queue<pair<pair<int,int>,int>> q;
         
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                if(nums[i][j]==1)return false;
+                if(grid[i][j]==2)q.push({{i,j},0});
             }
         }
-        return true;
-    }
-    int orangesRotting(vector<vector<int>>& grid) {
         
-        int low = 0 , high = 1e3;
-        int ans = INT_MAX;
-        while(low<=high){
-            int mid = low + (high-low)/2;
-            if(solve(grid,mid)){
-                ans=min(ans,mid);
-                high = mid-1;
+        vector<pair<int,int>> dir = {{-1,0},{0,1},{1,0},{0,-1}};
+        
+        int time =0;
+        
+        while(!q.empty()){
+            auto node = q.front();
+            q.pop();
+            
+            int x = node.first.first;
+            int y = node.first.second;
+            vis[x][y]=1;
+            
+             time = node.second;
+            
+            for(auto &it:dir){
+                int nx= x + it.first;
+                int ny = y + it.second;
+                
+                if(nx>=0 && nx<n && ny>=0 &&ny<m && grid[nx][ny]==1 && vis[nx][ny]==0){
+                    grid[nx][ny]=2;
+                    q.push({{nx,ny},time+1});
+                    
+                }
             }
-            else low = mid+1;
         }
-        
-        return ans==INT_MAX ? -1 : ans;
+                                                                            
+    
+         for(int i=0;i<n;i++){
+             for(int j=0;j<m;j++){
+                 if(grid[i][j]==1)return -1;
+             }
+         }                                                                  
+                                                                            
+                                                                            
+          return time;                                                  
+                                                                            
+                                                                            
     }
 };
