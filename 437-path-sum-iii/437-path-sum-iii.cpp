@@ -5,10 +5,9 @@ public:
     void solve(TreeNode * root, long long target){
         if(root==NULL) return ;
         if(target==root->val)ans++;
-        target= target- root->val;
         
-        solve(root->left,target);
-        solve(root->right,target);
+        solve(root->left,target-root->val);
+        solve(root->right,target-root->val);
         
     }
     int pathSum(TreeNode* root, int targetSum) {
