@@ -33,34 +33,10 @@ public:
 //         }
 //         return true;
         
-        if(!root)return true;
-        
-        queue<TreeNode*> q1,q2;
-        q1.push(root->left);
-        q2.push(root->right);
-        while(!q1.empty() && !q2.empty()){
-            auto left = q1.front();
-            q1.pop();
-            auto right = q2.front();
-            q2.pop();
-            
-            if(left==NULL && right==NULL)continue;            
-            else if(left==NULL || right==NULL)return false;
-            else  if(left->val!=right->val)return false;
-            
-            q1.push(left->left);
-            q1.push(left->right);
-            
-            q2.push(right->right);
-            q2.push(right->left);
-        }
-        
-        return true;
-        
 //          recurrsive code...
         
          
         
-        //return root==NULL || solve(root->left,root->right);
+        return root==NULL || solve(root->left,root->right);
     }
 };
