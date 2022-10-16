@@ -14,13 +14,10 @@ class Solution{
         
         for(int i=n-1; i>=0; i--){
             s.insert(arr[i]); // inserting the element into set
-        auto it
-            = s.upper_bound(arr[i]); // finding upper bound
-        if (it == s.end())
-            arr[i] = -1; // if upper_bound does not exist
-                         // then -1
-        else
-            arr[i] = *it;
+            auto it = s.lower_bound(arr[i]);
+            it++;
+            if(it==s.end())arr[i]=-1;
+            else arr[i]=*it;
         }
         return arr;
     }
