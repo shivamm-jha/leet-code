@@ -3,21 +3,38 @@ public:
     int dp[11][301];
     
     int solve(vector<int>&nums, int d, int i){
-        if(d==1){
-            return *max_element(nums.begin()+i,nums.end());
+//         if(d==1){
+//             return *max_element(nums.begin()+i,nums.end());
             
+//         }
+        
+//         int result=INT_MAX, ans = INT_MIN;
+        
+//         if(dp[d][i]!=-1)return dp[d][i];
+//         for(int j=i;j<=nums.size()-d;j++){
+//             ans= max(ans,nums[j]);
+//             result= min(result,ans+solve(nums,d-1,j+1));
+            
+//         }
+        
+//         return  dp[d][i]=  result;
+        
+        
+        
+        if(d==1){
+            return *max_element(begin(nums)+i, end(nums));
         }
         
-        int result=INT_MAX, ans = INT_MIN;
+        int res = INT_MAX, ans = INT_MIN;
         
         if(dp[d][i]!=-1)return dp[d][i];
+        
         for(int j=i;j<=nums.size()-d;j++){
-            ans= max(ans,nums[j]);
-            result= min(result,ans+solve(nums,d-1,j+1));
-            
+            ans = max(ans,nums[j]);
+            res = min(res, ans+ solve(nums,d-1,j+1));
         }
         
-        return  dp[d][i]=  result;
+        return dp[d][i] = res;
     }
     int minDifficulty(vector<int>& nums, int d) {
         if(nums.size()<d)return -1;
