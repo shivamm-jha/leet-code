@@ -7,7 +7,7 @@ public:
         
         int count=m, start =0, end = 0, minStart =0, minLen = INT_MAX;
         
-        unordered_map<char,int> mp;
+        vector<int> mp(128,0);
         for(auto &it: t)mp[it]++;
         
         while(end<n){
@@ -34,18 +34,3 @@ public:
         
     }
 };
-
-
-
-
-// while (counter == 0) {
-// 			if (end - start < minLen) {
-// 				minStart = start;
-// 				minLen = end - start;
-// 			}
-// 			m[s[start]]++;
-// 			// When char exists in t, increase counter.
-// 			if (m[s[start]] > 0)
-// 				counter++;
-// 			start++;
-// 		}
