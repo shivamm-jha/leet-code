@@ -2,11 +2,12 @@ class Solution {
 public:
     int dp[201][20001];
     bool solve(vector<int>&nums, int idx, int sum){
-        if(idx==nums.size()){
-            if(sum==0)return true;
-            return false;
+        if(idx==nums.size() || sum<=0){
+            // if(sum==0)return true;
+            // return false;
+            return sum ==0;
         }
-        if(sum<0)return false;
+       // if(sum<0)return false;
         if(dp[idx][sum]!=-1)return dp[idx][sum];
         
         bool take = solve(nums,idx+1,sum-nums[idx]);
