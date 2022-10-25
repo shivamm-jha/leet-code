@@ -29,14 +29,9 @@ public:
             if(l==size2){j++; l=0;}
         }
         
-        cout<<i<<" "<<j<<endl;
-        cout<<k<<" "<<l<<endl;
         
-        if(i>= word1.size() and j>=word2.size())return true;
-        if(i<word1.size() || j<word2.size()) return false;
-        if(i==word1.size() && k<word1[i-1].size())return false;
-        if(j==word2.size() and l<word2[j-1].size()) return false;
-        return true;
+        
+        return i== word1.size() and j==word2.size();
     }
     
 };
