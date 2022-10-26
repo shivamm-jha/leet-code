@@ -25,7 +25,7 @@ public:
         if(dp[i][j][sum]!=-1)return dp[i][j][sum];
         int top = solve(nums,i-1,j,(sum+nums[i][j])%k,k,dp);
         int left = solve(nums,i,j-1,(sum+nums[i][j])%k,k,dp);
-        return dp[i][j][sum] = (top+left)%mod;
+        return dp[i][j][sum] = (top%mod + left%mod)%mod;
     }
     
     
