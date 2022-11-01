@@ -18,18 +18,26 @@ public:
 //         return max_profit;
         
         
-        vector<int> right_max(n);
-        right_max[n-1]=prices[n-1];
-        for(int i=n-2;i>=0;i--){
-            right_max[i]= max(right_max[i+1],prices[i]);
-        }
+//         vector<int> right_max(n);
+//         right_max[n-1]=prices[n-1];
+//         for(int i=n-2;i>=0;i--){
+//             right_max[i]= max(right_max[i+1],prices[i]);
+//         }
         
-        int profit=0;
+//         int profit=0;
         
+//         for(int i=0;i<n;i++){
+//             profit= max(profit, right_max[i]-prices[i]);
+//         }
+        
+//         return profit;
+        if(n==0)return 0;
+        int soFarMin=prices[0];
+        int profit =0;
         for(int i=0;i<n;i++){
-            profit= max(profit, right_max[i]-prices[i]);
+            soFarMin= min(soFarMin,prices[i]);
+            profit= max(profit,prices[i]-soFarMin);
         }
-        
         return profit;
     }
 };
