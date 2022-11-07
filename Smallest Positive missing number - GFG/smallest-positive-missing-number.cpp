@@ -13,24 +13,25 @@ class Solution
     int missingNumber(int arr[], int n) 
     { 
         // Your code here
-        unordered_map<int,int> mp;
-        for(int i=0;i<n;i++){
-            mp[arr[i]]++;
-        }
+        // unordered_map<int,int> mp;
+        // for(int i=0;i<n;i++){
+        //     mp[arr[i]]++;
+        // }
         
-        for(int i=1;i<=n;i++){
-            if(mp.find(i)==mp.end()){
-                return i;
-            }
-        }
-        return n+1;
+        // for(int i=1;i<=n;i++){
+        //     if(mp.find(i)==mp.end()){
+        //         return i;
+        //     }
+        // }
+        // return n+1;
         
         sort(arr ,arr+n);
+        int ans =1;
         
         for(int i=0;i<n;i++){
-            if(arr[i]> 0 and arr[i]!=i)return i;
+            if(arr[i]==ans)ans++;
         }
-        return n+1;
+        return ans;
     } 
 };
 
