@@ -24,6 +24,13 @@ class Solution
             }
         }
         return n+1;
+        
+        sort(arr ,arr+n);
+        
+        for(int i=0;i<n;i++){
+            if(arr[i]> 0 and arr[i]!=i)return i;
+        }
+        return n+1;
     } 
 };
 
