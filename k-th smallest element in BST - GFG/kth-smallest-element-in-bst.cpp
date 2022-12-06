@@ -79,66 +79,42 @@ Node* buildTree(string str) {
 // } Driver Code Ends
 /*Complete the function below
 
-// struct Node {
-//     int data;
-//     Node *left;
-//     Node *right;
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
 
-//     Node(int val) {
-//         data = val;
-//         left = right = NULL;
-//     }
-// };
-// */
-
-// class Solution {
-//   public:
-//     // Return the Kth smallest element in the given BST
-//     void inorder(Node * root, int k, int &ans){
-//         if(root==NULL) return ;
-        
-//         inorder(root->left,k,ans);
-//         k--;
-//         if(k==0){
-//             ans= root->data;
-//             return;
-//         }
-        
-//         inorder(root->right,k,ans);
-//     }
-//     int KthSmallestElement(Node *root, int k) {
-//         // add code here.
-//         int ans = -1;
-//         inorder(root,k,ans);
-//         return ans;
-        
-//     }
-// };
-
-
-class Solution {
-    void inorder(Node* root, int &K, int &ans) {
-        if (root == NULL) {
-            return;
-        }
-        
-        inorder(root->left, K, ans);
-        K--;
-        if (K == 0) {
-            ans = root->data;
-            return;
-        }
-        inorder(root->right, K, ans);
-    }
-  public:
-    // Return the Kth smallest element in the given BST
-    int KthSmallestElement(Node *root, int K) {
-        // add code here.
-        int ans = -1;
-        inorder(root, K, ans);
-        return ans;
+    Node(int val) {
+        data = val;
+        left = right = NULL;
     }
 };
+*/
+
+class Solution {
+  public:
+    // Return the Kth smallest element in the given BST
+    void inorder(Node * root, int &k, int &ans){
+        if(root==NULL) return ;
+        
+        inorder(root->left,k,ans);
+        k--;
+        if(k==0){
+            ans= root->data;
+            return;
+        }
+        
+        inorder(root->right,k,ans);
+    }
+    int KthSmallestElement(Node *root, int k) {
+        // add code here.
+        int ans = -1;
+        inorder(root,k,ans);
+        return ans;
+        
+    }
+};
+
 
 //{ Driver Code Starts.
 int main() {
